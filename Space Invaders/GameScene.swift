@@ -10,6 +10,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    let shot = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
+    
     let player = SKSpriteNode(imageNamed: "playerShip")
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background")
@@ -32,7 +34,7 @@ class GameScene: SKScene {
         self.addChild(bullet)
         let moveBullet = SKAction.moveTo(y: self.size.height + bullet.size.height, duration: 1)
         let deleteBullet = SKAction.removeFromParent()
-        let bulletSequence = SKAction.sequence([moveBullet,deleteBullet])
+        let bulletSequence = SKAction.sequence([shot, moveBullet,deleteBullet])
         bullet.run(bulletSequence)
         
         
